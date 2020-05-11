@@ -1,18 +1,17 @@
 import React from 'react';
 import s from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile = () => {
+
+
+const Profile = (props) => {
+
+  debugger;
+
     return <div className={s.Profile}>
-    <div>
-    <img src='https://klike.net/uploads/posts/2019-06/1561182204_1.jpg'/>
-    </div>
-    <div>
-      Ava
-    </div>
-    <div>
-      <MyPosts/>
-    </div>
+      <ProfileInfo/>
+      <MyPosts PostData={props.PostData}/>
   </div>
 }
 

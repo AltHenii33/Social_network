@@ -2,7 +2,11 @@ import React from 'react';
 import MyPostmodule from './MyPosts.module.css';
 import Post from './Post/Post';
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+
+
+  let PostElements = props.PostData.map (p => <Post message={p.message} likecount={p.likecount}/>);
+
   return (
     <div className={MyPostmodule.Post}>
       <div>
@@ -12,8 +16,7 @@ const MyPosts = () => {
         <textarea></textarea>
         <button>Add post</button>
     </div>
-    <Post likecount='15' message='Hi, this is my first post' />
-    <Post likecount='81' message='I know who is it'/>
+    {PostElements}
     </div>
   )
 }

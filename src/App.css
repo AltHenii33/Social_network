@@ -6,9 +6,13 @@
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
+    margin: 10px;
+    background-image: url(https://zastavok.net/main/creative-wallpaper/156676666440.jpg);
+    background-size: 100%;
 }
+
 
 .app-wrapper-content {
     grid-area: c;
-    background-color: cornflowerblue;
+    box-shadow: 0 0 5px rgb(198, 207, 207);
 }
