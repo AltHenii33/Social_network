@@ -1,29 +1,46 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-let initialState ={
+let initialState = {
   PostData: [
-      { message: 'Hi, this is my first post', likecount: 44 },
-      { message: 'I know who is it', likecount: 25 }
-    ],
-    newPostText: 'hay'
+    { message: 'Hi, this is my first post', likecount: 44 },
+    { message: 'I know who is it', likecount: 25 }
+  ],
+  newPostText: 'hay'
 };
-
 const profileReduser = (state = initialState, action) => {
+  switch (action.type) {
 
-        if (action.type === ADD_POST) {
-          let newPost = {
-            message: state.newPostText,
-            likecount: 0
-          };
-          state.PostData.push(newPost);
-          state.newPostText = '';
-
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-          state.newPostText = action.newText;
-
-        }
-
-    return state;
+    case ADD_POST: {
+      let newPost = {
+        message: state.newPostText,
+        likecount: 0
+      };
+      let stateCopy = { ...state };
+      stateCopy.PostData = [ ...state.PostData ];
+      stateCopy.PostData.push(newPost);
+      stateCopy.newPostText = '';
+      return stateCopy;
+    }
+    case UPDATE_NEW_POST_TEXT: {
+      let stateCopy = { ...state };
+      stateCopy.newPostText = action.newText;
+      return stateCopy;
+    }
+    default:
+      return state;
+  }
 }
+
+export const addPostActionCreator = () => {
+  return {
+    type: ADD_POST
+  }
+}
+export const updateNewPostTextActionCreator = (text) => {
+  return {
+    type: UPDATE_NEW_POST_TEXT, newText: text
+  }
+}
+
 export default profileReduser;
