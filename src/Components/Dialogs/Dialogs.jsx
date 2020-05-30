@@ -28,11 +28,11 @@ const Dialogs = (props) => {
   let NewMessageElement = React.createRef();
 
   let addMessage = () => {
-    props.onSendMessage();
+    props.addMessageActionCreator();
   }
   let onMessageChange = () => {
     let text = NewMessageElement.current.value;
-    props.onMessageChange(text);
+    props.updateNewMessageTextActionCreator(text);
   }
   return <div className={s.dialogs}>
     <div className={s.items}>
