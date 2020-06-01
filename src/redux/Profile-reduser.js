@@ -19,15 +19,11 @@ const profileReduser = (state = initialState, action) => {
   switch (action.type) {
 
     case ADD_POST: {
-      let newPost = {
-        message: state.newPostText,
-        likecount: 0
-      };
-      let stateCopy = { ...state };
-      stateCopy.PostData = [ ...state.PostData ];
-      stateCopy.PostData.push(newPost);
-      stateCopy.newPostText = '';
-      return stateCopy;
+      let body = action.newPostBody
+      return {
+        ...state,
+        PostData: [...state.PostData, {message: body, likecount:'0'}]
+      }
     }
     case UPDATE_NEW_POST_TEXT: {
       let stateCopy = { ...state };
@@ -45,14 +41,10 @@ const profileReduser = (state = initialState, action) => {
   }
 }
 
-export const addPostActionCreator = () => {
+export const addPostActionCreator = (newPostBody) => {
   return {
-    type: ADD_POST
-  }
-}
-export const updateNewPostTextActionCreator = (text) => {
-  return {
-    type: UPDATE_NEW_POST_TEXT, newText: text
+    type: ADD_POST,
+    newPostBody
   }
 }
 export const setUserProfile = (profile) => {

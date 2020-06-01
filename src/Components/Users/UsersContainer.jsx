@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import Users from './Users';
 import { acceptFollow, acceptUnfollow, setCurrentPages, toggleFollowing, getUsersThunkCreator, follow } from '../../redux/Users-reduser';
-import Preloader from '../../Preloader';
+import Preloader from '../common/Preloader';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
