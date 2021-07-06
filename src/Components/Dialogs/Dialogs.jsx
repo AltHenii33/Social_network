@@ -1,9 +1,12 @@
 import React from 'react';
 import s from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
+<<<<<<< HEAD
 import { Field, reduxForm } from 'redux-form';
 import { TextArea } from '../common/FormsControls/FormsControls';
 import {required, maxLengthCreator} from '../../utils/Validators/Validator'
+=======
+>>>>>>> parent of 7fe2925... 78
 
 const DialogItem = (props) => {
 
@@ -23,6 +26,7 @@ const Message = (props) => {
   )
 }
 
+<<<<<<< HEAD
 const maxLength20 = maxLengthCreator(20);
 
 const addMessageForm = (props) => {
@@ -51,9 +55,22 @@ const Dialogs = (props) => {
     values.newMessageBody = '';
 }
 
-  let DialogElements = props.DialogData.map(d => <DialogItem name={d.name} key={d.id} id={d.id} img={d.img} />);
-  let MessageElements = props.MessageData.map(m => <Message message={m.message} key={m.id} />);
+=======
+const Dialogs = (props) => {
 
+>>>>>>> parent of 7fe2925... 78
+  let DialogElements = props.DialogData.map(d => <DialogItem name={d.name} key={d.id} id={d.id} img={d.img} />);
+  let MessageElements = props.MessageData.map(m => <Message message={m.message}  key={m.id}/>);
+
+  let NewMessageElement = React.createRef();
+
+  let addMessage = () => {
+    props.addMessageActionCreator();
+  }
+  let onMessageChange = () => {
+    let text = NewMessageElement.current.value;
+    props.updateNewMessageTextActionCreator(text);
+  }
   return <div className={s.dialogs}>
     <div className={s.items}>
       {DialogElements}
@@ -61,10 +78,15 @@ const Dialogs = (props) => {
     </div>
     <div className={s.messages}>
       {MessageElements}
+      <textarea
+        ref={NewMessageElement}
+        onChange={onMessageChange}
+        value={props.NewMessageText}
+      ></textarea>
+      <button onClick={addMessage}>Add Post</button>
     </div>
-    <MessageReduxForm onSubmit={addNewMessage}/>
+
   </div>
 }
-
 
 export default Dialogs;

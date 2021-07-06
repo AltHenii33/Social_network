@@ -1,6 +1,7 @@
 import React from 'react';
 import MyPostmodule from './MyPosts.module.css';
 import Post from './Post/Post';
+<<<<<<< HEAD
 import { Field, reduxForm } from 'redux-form';
 import {required, maxLengthCreator} from '../../../utils/Validators/Validator'
 import { TextArea } from '../../common/FormsControls/FormsControls';
@@ -25,6 +26,8 @@ const MyPostForm = (props) => {
 }
 
 const PostReduxForm = reduxForm({form:'postAddMessageForm'})(MyPostForm)
+=======
+>>>>>>> parent of 7fe2925... 78
 
 const MyPosts = (props) => {
   let PostElements = props.PostData.map(p => <Post 
@@ -35,18 +38,38 @@ const MyPosts = (props) => {
     addLike={props.addLike} 
     dellPost={props.dellPost}/>);
 
+<<<<<<< HEAD
   let addNewPost = (values) => {
     props.addPost(values.newPostBody);
     values.newPostBody = '';
   }
 
   
+=======
+
+  let NewPostElement = React.createRef();
+
+  let onAddPost = () => {
+    props.addPost();
+  }
+  let onPostChange = () => {
+    let text = NewPostElement.current.value;
+    props.updateNewPostText(text);
+  }
+>>>>>>> parent of 7fe2925... 78
   return (
     <div className={MyPostmodule.Post}>
       <div>
         My post
     </div>
-      <PostReduxForm onSubmit={addNewPost} />
+      <div>
+        <textarea
+          onChange={onPostChange}
+          ref={NewPostElement}
+          value={props.newPostText}
+        />
+        <button onClick={onAddPost}>Add post</button>
+      </div>
       {PostElements}
     </div>
   )

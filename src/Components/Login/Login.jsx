@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { login } from '../../redux/Auth-reduser'
@@ -6,9 +7,12 @@ import { Redirect } from 'react-router-dom';
 import { required } from '../../utils/Validators/Validator';
 import { Input } from '../common/FormsControls/FormsControls';
 import styles from '../common/FormsControls/FormsControls.module.css'
+=======
+>>>>>>> parent of 7fe2925... 78
 
-const LoginForm = (props) => {
+const Login = () => {
     return (
+<<<<<<< HEAD
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field placeholder={'Login'} name={'login'} component={Input} validate={required} />
@@ -51,3 +55,10 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, { login })(Login);
+=======
+        'LOGIN'
+    )
+}
+
+export default Login;
+>>>>>>> parent of 7fe2925... 78

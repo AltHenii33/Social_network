@@ -21,12 +21,24 @@ const profileReduser = (state = initialState, action) => {
   switch (action.type) {
 
     case ADD_POST: {
+<<<<<<< HEAD
       let body = action.newPostBody
       let a = state.PostData.length+1;
       return {
         ...state,
         PostData: [...state.PostData, {id:a,  message: body, likecount:0}]
       }
+=======
+      let newPost = {
+        message: state.newPostText,
+        likecount: 0
+      };
+      let stateCopy = { ...state };
+      stateCopy.PostData = [ ...state.PostData ];
+      stateCopy.PostData.push(newPost);
+      stateCopy.newPostText = '';
+      return stateCopy;
+>>>>>>> parent of 7fe2925... 78
     }
     case UPDATE_NEW_POST_TEXT: {
       let stateCopy = { ...state };
@@ -74,10 +86,14 @@ const profileReduser = (state = initialState, action) => {
   }
 }
 
-export const addPostActionCreator = (newPostBody) => {
+export const addPostActionCreator = () => {
   return {
-    type: ADD_POST,
-    newPostBody
+    type: ADD_POST
+  }
+}
+export const updateNewPostTextActionCreator = (text) => {
+  return {
+    type: UPDATE_NEW_POST_TEXT, newText: text
   }
 }
 

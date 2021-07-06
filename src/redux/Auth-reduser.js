@@ -19,7 +19,7 @@ const authReduser = (state = initialState, action) => {
       return {
         ...state,
         ...action.data,
-        isAuth: action.isAuth
+        isAuth: true
 
       }
     }
@@ -30,11 +30,10 @@ const authReduser = (state = initialState, action) => {
   }
 }
 
-export const setUserAuth = (data, isAuth) => {
+export const setUserAuth = (data) => {
   return {
     type: SET_USER_AUTH,
-    data:data,
-    isAuth:isAuth
+    data:data
   }
 }
 
@@ -42,6 +41,7 @@ export const getAuthUserData = () => {
   return (dispatch) => {
     return userAPI.AuthMe ().then(data => {
       if (data.resultCode === 0) {
+<<<<<<< HEAD
         dispatch(setUserAuth (data.data, true));
       }
     });
@@ -66,6 +66,9 @@ export const logout = () => {
     userAPI.logout().then(data => {
       if (data.data.resultCode === 0) {
         dispatch(setUserAuth (null, false));
+=======
+        dispatch(setUserAuth (data.data));
+>>>>>>> parent of 7fe2925... 78
       }
     });
   }

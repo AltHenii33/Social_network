@@ -1,9 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import Users from './Users';
+<<<<<<< HEAD
 import { acceptFollow, acceptUnfollow, toggleFollowing, getUsersThunkCreator, follow } from '../../redux/Users-reduser';
 import Preloader from '../common/Preloader';
 import { getUsersSuper, getSelectPageSize, getSelectTotalUsersCount, getSelectCurrentPage, getSelectIsFetching, getSelectFollowingInProgress } from '../../redux/Users-selectors';
+=======
+import { acceptFollow, acceptUnfollow, setCurrentPages, toggleFollowing, getUsersThunkCreator, follow } from '../../redux/Users-reduser';
+import Preloader from '../../Preloader';
+>>>>>>> parent of 7fe2925... 78
 
 class UsersContainer extends React.Component {
     componentDidMount() {

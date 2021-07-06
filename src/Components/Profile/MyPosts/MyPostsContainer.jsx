@@ -1,6 +1,10 @@
 import React from 'react';
 import MyPosts from './MyPosts';
+<<<<<<< HEAD
 import { addPostActionCreator, addLikeActionCreator, deletePost} from '../../../redux/Profile-reduser';
+=======
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/Profile-reduser';
+>>>>>>> parent of 7fe2925... 78
 import { connect } from 'react-redux';
 
 
@@ -13,6 +17,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+<<<<<<< HEAD
     addPost: (newPostBody) => {
       dispatch(addPostActionCreator(newPostBody));
     },
@@ -21,6 +26,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     addLike: (likeId) => {
       dispatch(addLikeActionCreator(likeId));
+=======
+    addPost: () => {
+      dispatch(addPostActionCreator());
+    },
+    updateNewPostText: (text) => {
+      dispatch(updateNewPostTextActionCreator(text));
+>>>>>>> parent of 7fe2925... 78
     }
   }
 }
