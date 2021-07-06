@@ -3,7 +3,7 @@ import MyPostmodule from './MyPosts.module.css';
 import Post from './Post/Post';
 import { Field, reduxForm } from 'redux-form';
 import {required, maxLengthCreator} from '../../../utils/Validators/Validator'
-import { Textarea } from '../../common/FormsControls/FormsControls';
+import { TextArea } from '../../common/FormsControls/FormsControls';
 
 const maxLength10 = maxLengthCreator(10)
 
@@ -15,7 +15,7 @@ const MyPostForm = (props) => {
         validate = {[required, maxLength10]}
         placeholder={'Enter your post'}
         name={'newPostBody'}
-        component={Textarea} />
+        component={TextArea} />
     </div>
     <div>
       <button>Add post</button>
@@ -27,12 +27,19 @@ const MyPostForm = (props) => {
 const PostReduxForm = reduxForm({form:'postAddMessageForm'})(MyPostForm)
 
 const MyPosts = (props) => {
-
-  let PostElements = props.PostData.map(p => <Post message={p.message} likecount={p.likecount} key={p.id} />);
+  let PostElements = props.PostData.map(p => <Post 
+    id={p.id}
+    key={p.id}
+    message={p.message} 
+    likecount={p.likecount} 
+    addLike={props.addLike} 
+    dellPost={props.dellPost}/>);
 
   let addNewPost = (values) => {
     props.addPost(values.newPostBody);
+    values.newPostBody = '';
   }
+
   
   return (
     <div className={MyPostmodule.Post}>

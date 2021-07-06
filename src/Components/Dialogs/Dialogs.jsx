@@ -1,8 +1,8 @@
-import React, { createRef } from 'react';
+import React from 'react';
 import s from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import { Textarea } from '../common/FormsControls/FormsControls';
+import { TextArea } from '../common/FormsControls/FormsControls';
 import {required, maxLengthCreator} from '../../utils/Validators/Validator'
 
 const DialogItem = (props) => {
@@ -30,13 +30,13 @@ const addMessageForm = (props) => {
     <form onSubmit={props.handleSubmit}>
       <div>
         <Field 
-        component={Textarea} 
+        component={TextArea} 
         name='newMessageBody' 
         placeholder={'Enter your massage'} 
         validate = {[required, maxLength20]}/>
       </div>
       <div>
-      <button >Add Post</button>
+      <button >Add Message</button>
       </div>
     </form>
   )
@@ -48,6 +48,7 @@ const Dialogs = (props) => {
 
   const addNewMessage =(values) => {
     props.addMessageActionCreator(values.newMessageBody);
+    values.newMessageBody = '';
 }
 
   let DialogElements = props.DialogData.map(d => <DialogItem name={d.name} key={d.id} id={d.id} img={d.img} />);

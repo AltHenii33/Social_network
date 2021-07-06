@@ -1,6 +1,6 @@
 import React from 'react';
 import MyPosts from './MyPosts';
-import { addPostActionCreator } from '../../../redux/Profile-reduser';
+import { addPostActionCreator, addLikeActionCreator, deletePost} from '../../../redux/Profile-reduser';
 import { connect } from 'react-redux';
 
 
@@ -15,6 +15,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addPost: (newPostBody) => {
       dispatch(addPostActionCreator(newPostBody));
+    },
+    dellPost: (postId) => {
+      dispatch(deletePost(postId));
+    },
+    addLike: (likeId) => {
+      dispatch(addLikeActionCreator(likeId));
     }
   }
 }
